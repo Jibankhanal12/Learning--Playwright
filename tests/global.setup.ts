@@ -1,5 +1,5 @@
 import { expect } from "playwright/test";
-import { test } from "../fixtures/pom-fixture";
+import { test } from "../fixtures/common-fixture";
 test("Global setup for Auto Login", async ({
   page,
   loginPage,
@@ -7,7 +7,7 @@ test("Global setup for Auto Login", async ({
 }) => {
   await loginPage.goToOrangeHRM();
   await loginPage.loginHRM(process.env.USER_NAME!, process.env.PASSWORD!);
-  
+
   await page.waitForURL(
     `${process.env.BASE_URL}/web/index.php/dashboard/index`
   );
