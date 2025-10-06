@@ -10,7 +10,8 @@
     "test_dev_cr_hd": "cross-env ENV_NAME=dev npx playwright test --project=chromium --headed",
     "test_dev_ff_hd": "cross-env ENV_NAME=dev npx playwright test --project=firefox --headed",
     "test_dev_cr_hl": "cross-env ENV_NAME=dev npx playwright test --project=chromium",
-    "test_dev_ff_hl": "cross-env ENV_NAME=dev npx playwright test --project=firefox "
+    "test_dev_ff_hl": "cross-env ENV_NAME=dev npx playwright test --project=firefox ",
+    "test_dev_ui": "cross-env ENV_NAME=dev npx playwright test --project=chromium --ui"
   },
   "keywords": [],
   "author": "",
