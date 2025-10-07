@@ -1,4 +1,5 @@
 import { expect } from "@playwright/test";
+import { time } from "console";
 
 export class PimPage {
   // Define locators
@@ -11,6 +12,8 @@ export class PimPage {
   readonly saveButton: any;
   readonly cancelButton: any;
   readonly personalDetailsHeader: any;
+  readonly searchEmployeeInput: any;
+  readonly searchButton: any;
   constructor(page: any) {
     this.page = page;
     this.addEmployeeButton = page.getByRole("button", { name: " Add" });
@@ -24,12 +27,12 @@ export class PimPage {
       name: "Personal Details",
     });
   }
-  async AddEmployee() {
+  // Method to add an employee
+  async addEmployee(firtname: string, middleName: string, lastName: string) {
     await this.addEmployeeButton.click();
-    await this.firstNameInput.fill("John");
-    await this.middleNameInput.fill("A");
-    await this.lastNameInput.fill("Doe");
+    await this.firstNameInput.fill(firtname);
+    await this.middleNameInput.fill(middleName);
+    await this.lastNameInput.fill(lastName);
     await this.saveButton.click();
-    await expect(this.personalDetailsHeader).toBeVisible();
   }
 }

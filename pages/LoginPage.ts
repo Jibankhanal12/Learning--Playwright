@@ -25,7 +25,9 @@ export class LoginPage {
   }
 
   async goToOrangeHRM() {
-    await this.page.goto(process.env.BASE_URL + "/web/index.php/auth/login");
+    await this.page.goto(
+      process.env.BASE_URL + "/web/index.php/auth/login?lang=en_US"
+    );
   }
   async loginHRM(username: string, password: string) {
     await this.userNameInput.fill(username);

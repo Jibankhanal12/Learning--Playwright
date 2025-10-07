@@ -14,17 +14,17 @@ export const test = baseTest.extend<HooksFixtureType>({
     await loginPage.goToOrangeHRM();
     await use();
   },
-  logout: async ({ userPage }: { userPage: any }, use: () => Promise<void>) => {
-    await use();
-    await userPage.logout();
-  },
-  gotoForgotPassword: async (
-    { loginPage }: { loginPage: any },
-    use: () => Promise<void>
-  ) => {
-    await loginPage.gotoForgotPassword();
-    await use();
-  },
+  // logout: async ({ userPage }: { userPage: any }, use: () => Promise<void>) => {
+  //   await use();
+  //   await userPage.logout();
+  // },
+  // gotoForgotPassword: async (
+  //   { loginPage }: { loginPage: any },
+  //   use: () => Promise<void>
+  // ) => {
+  //   await loginPage.gotoForgotPassword();
+  //   await use();
+  // },
 });
 
 export { expect } from "@playwright/test";

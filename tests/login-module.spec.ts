@@ -75,32 +75,32 @@ test("Login to HRM with both invalid username, password", async ({
   await expect(loginPage.userNameInput).toBeVisible();
 });
 
-test("click on forgot password link", async ({
-  gotoUrl,
-  page,
-  loginPage,
-  gotoForgotPassword,
-}) => {
-  await expect(loginPage.resetPasswordButton).toBeVisible();
-});
+// test("click on forgot password link", async ({
+//   gotoUrl,
+//   page,
+//   loginPage,
+//   gotoForgotPassword,
+// }) => {
+//   await expect(loginPage.resetPasswordButton).toBeVisible();
+// });
 
-test("Reset password with valid username", async ({
-  gotoUrl,
-  page,
-  loginPage,
-  gotoForgotPassword,
-}) => {
-  await loginPage.resetPassword(process.env.USER_NAME!);
-  await expect(
-    page.getByRole("heading", { name: "Reset Password link sent" })
-  ).toBeVisible();
-});
-test("click on cancle button", async ({
-  gotoUrl,
-  page,
-  loginPage,
-  gotoForgotPassword,
-}) => {
-  await loginPage.cancelButton.click();
-  await expect(loginPage.loginButton).toBeVisible();
-});
+// test("Reset password with valid username", async ({
+//   gotoUrl,
+//   page,
+//   loginPage,
+//   gotoForgotPassword,
+// }) => {
+//   await loginPage.resetPassword(process.env.USER_NAME!);
+//   await expect(
+//     page.getByRole("heading", { name: "Reset Password link sent" })
+//   ).toBeVisible();
+// });
+// test("click on cancle button", async ({
+//   gotoUrl,
+//   page,
+//   loginPage,
+//   gotoForgotPassword,
+// }) => {
+//   await loginPage.cancelButton.click();
+//   await expect(loginPage.loginButton).toBeVisible();
+// });

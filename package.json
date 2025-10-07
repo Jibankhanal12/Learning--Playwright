@@ -24,6 +24,7 @@
   "dependencies": {
     "cross-env": "^10.0.0",
     "crypto-js": "^4.2.0",
-    "dotenv": "^17.2.2"
+    "dotenv": "^17.2.2",
+    "faker": "^6.6.6"
   }
 }
