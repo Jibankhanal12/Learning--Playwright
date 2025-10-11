@@ -4,12 +4,14 @@ import { DashboardPage } from "../pages/DashboardPage";
 import { UserPage } from "../pages/UserPage";
 import { LeftNavigation } from "../pages/LeftNavigation";
 import { PimPage } from "../pages/PimPage";
+import { TestData } from "../utils/TestData";
 export type PomFixtureType = {
   loginPage: LoginPage;
   dashboardPage: DashboardPage;
   userPage: UserPage;
   leftNavigation: LeftNavigation;
   pimPage: PimPage;
+  testData: TestData;
 };
 
 export const test = baseTest.extend<PomFixtureType>({
@@ -27,5 +29,8 @@ export const test = baseTest.extend<PomFixtureType>({
   },
   pimPage: async ({ page }, use) => {
     await use(new PimPage(page));
+  },
+  testData: async ({}, use) => {
+    await use(new TestData());
   },
 });

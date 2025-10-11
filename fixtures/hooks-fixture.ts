@@ -1,9 +1,11 @@
+import { TestData } from "../utils/TestData";
 import { test as baseTest } from "./common-fixture";
 
 type HooksFixtureType = {
   gotoUrl: any;
   logout: any;
   gotoForgotPassword: any;
+  testData: any;
 };
 export const test = baseTest.extend<HooksFixtureType>({
   // This will run before each test and navigate to the URL
@@ -14,6 +16,10 @@ export const test = baseTest.extend<HooksFixtureType>({
     await loginPage.goToOrangeHRM();
     await use();
   },
+  // testData: async ({}, use) => {
+  //   const testData = new TestData();
+  //   await use(testData);
+  // },
   // logout: async ({ userPage }: { userPage: any }, use: () => Promise<void>) => {
   //   await use();
   //   await userPage.logout();
