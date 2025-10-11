@@ -2,16 +2,6 @@ import { expect } from "@playwright/test";
 import { time } from "console";
 
 export class PimPage {
-  static addEmployeeWithLoginDetails(
-    arg0: string,
-    arg1: string,
-    arg2: string,
-    arg3: string,
-    arg4: string,
-    arg5: boolean
-  ) {
-    throw new Error("Method not implemented.");
-  }
   // Define locators
   readonly page: any;
   readonly addEmployeeButton: any;
@@ -51,16 +41,16 @@ export class PimPage {
   }
   // Method to add an employee
   async addEmployee(
-    firtname: string,
+    firstname: string,
     lastName: string,
     middleName?: string,
     employeeId?: string
   ) {
     await this.addEmployeeButton.click();
-    await this.firstNameInput.fill(firtname);
-    await this.middleNameInput.fill(middleName);
+    await this.firstNameInput.fill(firstname);
+    if (middleName) await this.middleNameInput.fill(middleName);
     await this.lastNameInput.fill(lastName);
-    await this.employeeIdInput.fill(employeeId);
+    if (employeeId) await this.employeeIdInput.fill(employeeId);
     await this.saveButton.click();
   }
   async addEmployeeWithLoginDetails(
@@ -69,12 +59,14 @@ export class PimPage {
     username: string,
     password: string,
     confirmPassword: string,
-    middleName?: string
+    middleName?: string,
+    employeeId?: string
   ) {
     await this.addEmployeeButton.click();
     await this.firstNameInput.fill(firstName);
     await this.lastNameInput.fill(lastName);
-    await this.middleNameInput.fill(middleName);
+    if (middleName) await this.middleNameInput.fill(middleName);
+    if (employeeId) await this.employeeIdInput.fill(employeeId);
     await this.createLoginDetailsCheckbox.check();
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);

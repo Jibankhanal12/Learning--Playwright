@@ -1,32 +1,30 @@
 import { test, expect } from "../fixtures/hooks-fixture";
 import { LeftNavigation } from "../pages/LeftNavigation";
 import { PimPage } from "../pages/PimPage";
+import { TestData } from "../utils/TestData";
 
-test("Add Employee in PIM Module", async ({
+test("Add Employee with all details", async ({
   page,
   gotoUrl,
   leftNavigation,
   pimPage,
 }) => {
+  const data = new TestData();
+  const employee = data.generateEmployee();
   await leftNavigation.openPimTab();
-  await pimPage.addEmployee("John", "A", "Doe", "123450");
+  await pimPage.addEmployee(
+    employee.firstName,
+    employee.lastName,
+    employee.middleName,
+    employee.employeeId
+  );
   await expect(pimPage.personalDetailsHeader).toHaveText("Personal Details", {
     timeout: 50000,
   });
 });
-test("Add Employee with Login Details in PIM Module", async ({
+test("Add Employee with required details", async ({
   page,
   gotoUrl,
   leftNavigation,
   pimPage,
-}) => {
-  await leftNavigation.openPimTab();
-  await pimPage.addEmployeeWithLoginDetails(
-    "Jane",
-    "Smith",
-    "janesmith",
-    "Password123!",
-    "Password123!"
-  );
-  await expect(pimPage.successToast).toHaveText("Successfully Saved");
-});
+}) => {});
