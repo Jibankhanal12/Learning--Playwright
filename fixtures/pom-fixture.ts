@@ -30,7 +30,4 @@ export const test = baseTest.extend<PomFixtureType>({
   pimPage: async ({ page }, use) => {
     await use(new PimPage(page));
   },
-  testData: async ({}, use) => {
-    await use(new TestData());
-  },
 });

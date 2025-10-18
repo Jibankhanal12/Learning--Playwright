@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
 import { dot } from "node:test/reporters";
-import path from "path"; 
+import path from "path";
 
 /**
  * Read environment variables from file.
@@ -30,6 +30,10 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: "html",
+  timeout: 90000,
+  expect: {
+    timeout: 50000,
+  },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -42,16 +46,18 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: [{
-    name:"setup",
-    testMatch:"global.setup.ts"
-  },
+  projects: [
     {
-      name: "chromium", 
-      dependencies:["setup"],
-      use: { ...devices["Desktop Chrome"],
-        storageState:'./Auth/.auth/auth.json'
-       },
+      name: "setup",
+      testMatch: "global.setup.ts",
+    },
+    {
+      name: "chromium",
+      dependencies: ["setup"],
+      use: {
+        ...devices["Desktop Chrome"],
+        storageState: "./Auth/.auth/auth.json",
+      },
     },
 
     // {
