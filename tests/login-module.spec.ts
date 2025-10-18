@@ -95,7 +95,7 @@ test("Login to HRM with both invalid username, password", async ({
 //     page.getByRole("heading", { name: "Reset Password link sent" })
 //   ).toBeVisible();
 // });
-// test("click on cancle button", async ({
+// test("click on  button", async ({
 //   gotoUrl,
 //   page,
 //   loginPage,

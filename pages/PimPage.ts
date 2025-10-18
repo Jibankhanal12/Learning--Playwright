@@ -1,6 +1,5 @@
+import { th } from "@faker-js/faker";
 import { expect } from "@playwright/test";
-import { time } from "console";
-
 export class PimPage {
   // Define locators
   readonly page: any;
@@ -18,7 +17,10 @@ export class PimPage {
   readonly usernameInput: any;
   readonly passwordInput: any;
   readonly confirmPasswordInput: any;
-  readonly successToast: any;
+  readonly imageUploadButton: any;
+  readonly imageUploadInput: any;
+  readonly firstNameFieldError: any;
+  readonly lastNameFieldError: any;
   constructor(page: any) {
     this.page = page;
     this.addEmployeeButton = page.getByRole("button", { name: " Add" });
@@ -37,14 +39,16 @@ export class PimPage {
     );
     this.passwordInput = page.locator('input[type="password"]').first();
     this.confirmPasswordInput = page.locator('input[type="password"]').nth(1);
-    this.successToast = page.getByText("Successfully Saved");
+    this.firstNameFieldError = page.getByText("Required").first();
+    this.lastNameFieldError = page.getByText("Required").nth(1);
   }
   // Method to add an employee
   async addEmployee(
     firstname: string,
     lastName: string,
     middleName?: string,
-    employeeId?: string
+    employeeId?: string,
+    profileImage?: string
   ) {
     await this.addEmployeeButton.click();
     await this.firstNameInput.fill(firstname);
